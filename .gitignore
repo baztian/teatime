@@ -1,0 +1,7 @@
+./README*.html
+./build
+./dist
+./src/.ropeproject/globalnames
+./src/.ropeproject/history
+./src/.ropeproject/objectdb
+**/*.bak

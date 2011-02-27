@@ -1,0 +1,3 @@
+[console_scripts]
+teatime = teatime.application:main
+

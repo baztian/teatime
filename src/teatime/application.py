@@ -65,9 +65,9 @@ class MyFrame(wx.Frame):
 
     def OnTimer(self, event):
         self.slider_update.Stop()
+        self.slider.SetValue(0)
         self.scrolling = False
-        dlg = wx.MessageDialog(self,
-                               "Mind the tea!", "Tea!?",
+        dlg = wx.MessageDialog(self, "Mind the tea!", "Tea!?",
                                style=wx.OK, pos=wx.DefaultPosition)
         dlg.Raise()
         dlg.Iconize(False)

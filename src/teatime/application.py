@@ -44,6 +44,7 @@ class MyFrame(wx.Frame):
                                 wx.SL_AUTOTICKS | wx.SL_LABELS)
         sizer.Add(self.slider, 1, 0)
         self.slider.SetTickFreq(30, 1)
+        self.slider.SetPageSize(30)
         self.slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
         panel.SetSizer(sizer)
         return panel

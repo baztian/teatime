@@ -26,6 +26,7 @@ class MyFrame(wx.Frame):
         wx.Frame.__init__(self, None, -1, "TeaTimer")
         sizer = wx.BoxSizer()
         self.time_val = 0
+        self.scrolling = False
         panel = self.CreateMainPanel()
         sizer.Add(panel, 0, 0)
         self.SetSizer(sizer)
@@ -45,11 +46,17 @@ class MyFrame(wx.Frame):
         sizer.Add(self.slider, 1, 0)
         self.slider.SetTickFreq(30, 1)
         self.slider.SetPageSize(30)
-        self.slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
+        self.slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnScrollChanged)
+        self.slider.Bind(wx.EVT_SCROLL, self.OnScroll)
         panel.SetSizer(sizer)
         return panel
 
-    def OnSlide(self, event):
+    def OnScroll(self, event):
+        self.scrolling = True
+        event.Skip()
+
+    def OnScrollChanged(self, event):
+        self.scrolling = False
         self.time_val = event.GetPosition()
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
         self.timer.Start(self.time_val * 1000, oneShot=True)
@@ -58,6 +65,7 @@ class MyFrame(wx.Frame):
 
     def OnTimer(self, event):
         self.slider_update.Stop()
+        self.scrolling = False
         dlg = wx.MessageDialog(self,
                                "Mind the tea!", "Tea!?",
                                style=wx.OK, pos=wx.DefaultPosition)
@@ -68,6 +76,8 @@ class MyFrame(wx.Frame):
 
     def OnSliderUpdate(self, event):
         self.time_val -= 1
+        if self.scrolling:
+            return
         self.slider.SetValue(self.time_val)
     
 def main():

@@ -38,7 +38,7 @@ class MyFrame(wx.Frame):
         # TODO: do we need a panel here or is a sizer enough?
         panel = wx.Panel(self, -1)
         sizer = wx.FlexGridSizer(rows=1, cols=2, hgap=5)
-        label = wx.StaticText(panel, -1, "Time")
+        label = wx.StaticText(panel, -1, "Seconds")
         sizer.Add(label, 0, 0)
         self.slider = wx.Slider(panel, -1, self.time_val, 0, 600,
                                 size=(200,-1), style=wx.SL_HORIZONTAL |

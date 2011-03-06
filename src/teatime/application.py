@@ -56,6 +56,8 @@ class MyFrame(wx.Frame):
         dlg = wx.MessageDialog(self,
                                "Mind the tea! (after %ss)" % self.time_val,
                                "Tea!?", style=wx.OK, pos=wx.DefaultPosition)
+        dlg.Raise()
+        dlg.Iconize(False)
         dlg.ShowModal()
         dlg.Destroy()
     

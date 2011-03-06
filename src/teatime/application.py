@@ -31,6 +31,7 @@ class MyFrame(wx.Frame):
         self.SetSizer(sizer)
         self.Fit()
         self.timer = wx.Timer(self)
+        self.slider_update = wx.Timer(self)
 
     def CreateMainPanel(self):
         # TODO: do we need a panel here or is a sizer enough?
@@ -38,12 +39,12 @@ class MyFrame(wx.Frame):
         sizer = wx.FlexGridSizer(rows=1, cols=2, hgap=5)
         label = wx.StaticText(panel, -1, "Time")
         sizer.Add(label, 0, 0)
-        slider = wx.Slider(panel, -1, self.time_val, 0, 600, size=(200,-1),
-                           style=wx.SL_HORIZONTAL |
-                           wx.SL_AUTOTICKS | wx.SL_LABELS)
-        sizer.Add(slider, 1, 0)
-        slider.SetTickFreq(30, 1)
-        slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
+        self.slider = wx.Slider(panel, -1, self.time_val, 0, 600,
+                                size=(200,-1), style=wx.SL_HORIZONTAL |
+                                wx.SL_AUTOTICKS | wx.SL_LABELS)
+        sizer.Add(self.slider, 1, 0)
+        self.slider.SetTickFreq(30, 1)
+        self.slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
         panel.SetSizer(sizer)
         return panel
 
@@ -51,15 +52,22 @@ class MyFrame(wx.Frame):
         self.time_val = event.GetPosition()
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
         self.timer.Start(self.time_val * 1000, oneShot=True)
+        self.Bind(wx.EVT_TIMER, self.OnSliderUpdate, self.slider_update)
+        self.slider_update.Start(1000)
 
     def OnTimer(self, event):
+        self.slider_update.Stop()
         dlg = wx.MessageDialog(self,
-                               "Mind the tea! (after %ss)" % self.time_val,
-                               "Tea!?", style=wx.OK, pos=wx.DefaultPosition)
+                               "Mind the tea!", "Tea!?",
+                               style=wx.OK, pos=wx.DefaultPosition)
         dlg.Raise()
         dlg.Iconize(False)
         dlg.ShowModal()
         dlg.Destroy()
+
+    def OnSliderUpdate(self, event):
+        self.time_val -= 1
+        self.slider.SetValue(self.time_val)
     
 def main():
     app = wx.PySimpleApp()

@@ -69,8 +69,10 @@ class MyFrame(wx.Frame):
         self.scrolling = False
         dlg = wx.MessageDialog(self, "Mind the tea!", "Tea!?",
                                style=wx.OK, pos=wx.DefaultPosition)
-        dlg.Raise()
+        self.Iconize(False)
         dlg.Iconize(False)
+        dlg.Raise()
+        self.Raise()
         dlg.ShowModal()
         dlg.Destroy()
 

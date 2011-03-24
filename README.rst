@@ -47,9 +47,8 @@ acknowledged. Thanks!
 License
 =======
 
-TeaTimer is released under the GNU Lesser General Public license
-(LGPL). See the file ``COPYING`` and ``COPYING.LESSER`` in the
-distribution for details.
+TeaTimer is released under the GNU General Public license (GPL). See
+the file ``COPYING`` in the distribution for details.
 
 
 Changelog
@@ -62,6 +61,6 @@ Changelog
 To do
 =====
 
-- Nothing yet.
+- Windows launcher
 
 .. _WxPython: http://www.wxpython.org/

@@ -48,7 +48,7 @@ License
 =======
 
 TeaTime is released under the GNU General Public license (GPL). See
-the file ``COPYING`` in the distribution for details.
+the file ``gpl.txt`` in the distribution for details.
 
 Changelog
 =========

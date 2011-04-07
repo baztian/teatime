@@ -1,8 +1,8 @@
-==========================
- TeaTimer - Mind the tea!
-==========================
+=========================
+ TeaTime - Mind the tea!
+=========================
 
-TeaTimer is a small application that sits on the tray bar of your
+TeaTime is a small application that sits on the tray bar of your
 computer and will inform you if a specified time is over.
 
 .. contents::
@@ -10,20 +10,20 @@ computer and will inform you if a specified time is over.
 Requirements
 ============
 
-You need wxPython to run TeaTimer.
+You need wxPython to run TeaTime.
 
 Install
 =======
 
-You can get and install TeaTimer with `easy_install
+You can get and install TeaTime with `easy_install
 <http://peak.telecommunity.com/DevCenter/EasyInstall>`_ ::
 
-    $ easy_install Tsrc/teatime/ReaTimer
+    $ easy_install TeaTime
 
 Or you can get a copy of the source branch using `bzr
 <http://bazaar.canonical.com/>`_ by running ::
 
-    $ bzr branch lp:teatimer
+    $ bzr branch lp:teatime
 
 and install it with ::
 
@@ -35,21 +35,20 @@ Ubuntu Lucid Lynx.
 Usage
 =====
 
-Simply start teatimer via the teatimer script.
+Simply start teatime via the teatime script.
 
 Contributing
 ============
 
 Please submit `bugs and patches
-<https://bugs.launchpad.net/teatimer>`_. All contributors will be
+<https://bugs.launchpad.net/teatime>`_. All contributors will be
 acknowledged. Thanks!
 
 License
 =======
 
-TeaTimer is released under the GNU General Public license (GPL). See
+TeaTime is released under the GNU General Public license (GPL). See
 the file ``COPYING`` in the distribution for details.
-
 
 Changelog
 =========

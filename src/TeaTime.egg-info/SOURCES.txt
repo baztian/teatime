@@ -1,8 +1,7 @@
 setup.py
 src/TeaTime.egg-info/PKG-INFO
+src/TeaTime.egg-info/PKG-INFO.~1~
 src/TeaTime.egg-info/SOURCES.txt
 src/TeaTime.egg-info/dependency_links.txt
 src/TeaTime.egg-info/entry_points.txt
 src/TeaTime.egg-info/top_level.txt
-src/teatime/__init__.py
-src/teatime/application.py

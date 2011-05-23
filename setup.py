@@ -18,6 +18,10 @@
 import ez_setup
 ez_setup.use_setuptools()
 from setuptools import setup, find_packages
+try:
+    import py2exe
+except ImportError:
+    pass
 
 print find_packages('src')
 setup(
@@ -45,10 +49,14 @@ setup(
     package_dir={ '': 'src' },
     entry_points = {
     'console_scripts': [
-    'teatime = teatime.application:main'
+    'teatime = teatime:main'
     ]
     },
     # install_requires = [
     # 'wxPython',
     # ],
+    # py2exe parameters
+    windows=[{'script': 'src/teatime.py',
+              'icon_resources': [(0, 'teatime.ico')]
+              }],
     )

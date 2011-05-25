@@ -19,6 +19,14 @@
 import sys
 import wx
 
+def time_str(seconds):
+    text = [ "%d seconds" % seconds ]
+    if seconds > 60:
+        mins = seconds / 60
+        rest = seconds - mins * 60
+        text.append("(%d:%d minutes)" % (mins, rest))
+    return " ".join(text)
+
 class MyFrame(wx.Frame):
 
     def __init__(self):
@@ -36,12 +44,12 @@ class MyFrame(wx.Frame):
     def CreateMainPanel(self):
         # TODO: do we need a panel here or is a sizer enough?
         panel = wx.Panel(self, -1)
-        sizer = wx.FlexGridSizer(rows=1, cols=2, hgap=5)
-        label = wx.StaticText(panel, -1, "Seconds")
-        sizer.Add(label, 0, 0)
+        sizer = wx.FlexGridSizer(rows=2, cols=1, hgap=5)
+        self.label = wx.StaticText(panel, -1, time_str(0))
+        sizer.Add(self.label, 0, 0)
         self.slider = wx.Slider(panel, -1, self.time_val, 0, 600,
                                 size=(200,-1), style=wx.SL_HORIZONTAL |
-                                wx.SL_AUTOTICKS | wx.SL_LABELS)
+                                wx.SL_AUTOTICKS)
         sizer.Add(self.slider, 1, 0)
         self.slider.SetTickFreq(30, 1)
         self.slider.SetPageSize(30)
@@ -52,6 +60,8 @@ class MyFrame(wx.Frame):
 
     def OnScroll(self, event):
         self.scrolling = True
+        seconds = event.GetPosition()
+        self.label.SetLabel(time_str(seconds))
         event.Skip()
 
     def OnScrollChanged(self, event):
@@ -65,6 +75,7 @@ class MyFrame(wx.Frame):
     def OnTimer(self, event):
         self.slider_update.Stop()
         self.slider.SetValue(0)
+        self.label.SetLabel(time_str(0))
         self.scrolling = False
         dlg = wx.MessageDialog(self, "Mind the tea!", "Tea!?",
                                style=wx.OK, pos=wx.DefaultPosition)
@@ -80,6 +91,7 @@ class MyFrame(wx.Frame):
         if self.scrolling:
             return
         self.slider.SetValue(self.time_val)
+        self.label.SetLabel(time_str(self.time_val))
     
 def main():
     app = wx.PySimpleApp()

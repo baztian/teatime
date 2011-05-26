@@ -34,7 +34,8 @@ class MyFrame(wx.Frame):
         sizer = wx.BoxSizer()
         self.time_val = 0
         self.scrolling = False
-        sizer = self.CreateMainPanel(self)
+        panel = self.CreateMainPanel()
+        sizer.Add(panel, 1, flag=wx.EXPAND)
         self.SetSizer(sizer)
         self.Fit()
         size = sizer.GetMinSize()
@@ -42,7 +43,8 @@ class MyFrame(wx.Frame):
         self.timer = wx.Timer(self)
         self.slider_update = wx.Timer(self)
 
-    def CreateMainPanel(self, panel):
+    def CreateMainPanel(self):
+        panel = wx.Panel(self, -1)
         sizer = wx.FlexGridSizer(rows=2, cols=1, hgap=5)
         sizer.AddGrowableCol(0)
         self.label = wx.StaticText(panel, -1, time_str(0))
@@ -55,7 +57,8 @@ class MyFrame(wx.Frame):
         self.slider.SetPageSize(30)
         self.slider.Bind(wx.EVT_SCROLL_CHANGED, self.OnScrollChanged)
         self.slider.Bind(wx.EVT_SCROLL, self.OnScroll)
-        return sizer
+        panel.SetSizer(sizer)
+        return panel
 
     def OnScroll(self, event):
         self.scrolling = True

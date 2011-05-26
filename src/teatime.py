@@ -30,7 +30,7 @@ def time_str(seconds):
 class MyFrame(wx.Frame):
 
     def __init__(self):
-        wx.Frame.__init__(self, None, -1, "TeaTimer")
+        wx.Frame.__init__(self, None, -1, "TeaTime")
         sizer = wx.BoxSizer()
         self.time_val = 0
         self.scrolling = False

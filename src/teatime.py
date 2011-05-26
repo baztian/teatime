@@ -24,7 +24,7 @@ def time_str(seconds):
     if seconds > 60:
         mins = seconds / 60
         rest = seconds - mins * 60
-        text.append("(%d:%d minutes)" % (mins, rest))
+        text.append("(%d:%02d minutes)" % (mins, rest))
     return " ".join(text)
 
 class MyFrame(wx.Frame):

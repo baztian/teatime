@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with TeaTime.  If not, see <http://www.gnu.org/licenses/>.
 
+from os import path
 import sys
 import wx
 
@@ -42,7 +43,22 @@ class MyFrame(wx.Frame):
         self.SetMinSize(size)
         self.timer = wx.Timer(self)
         self.slider_update = wx.Timer(self)
+        icon = self.CreateIcon()
+        self.SetIcon(icon)
 
+    def CreateIcon(self):
+        ib=wx.IconBundle()
+        try:
+            module_name = __file__
+        except NameError:
+            # Probably running from exe File
+            module_name = sys.argv[0]
+        ico_name = path.join(path.dirname(module_name), "teatime.ico")
+        icon = wx.Icon(ico_name, wx.BITMAP_TYPE_ICO)
+        #ib.AddIconFromFile(ico_name, wx.BITMAP_TYPE_ICO)
+        #self.SetIcons(ib)
+        return icon
+        
     def CreateMainPanel(self):
         panel = wx.Panel(self, -1)
         sizer = wx.FlexGridSizer(rows=2, cols=1, hgap=5)

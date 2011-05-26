@@ -52,11 +52,12 @@ setup(
     'teatime = teatime:main'
     ]
     },
+    data_files=[('',['src/teatime.ico',])],
     # install_requires = [
     # 'wxPython',
     # ],
     # py2exe parameters
     windows=[{'script': 'src/teatime.py',
-              'icon_resources': [(0, 'teatime.ico')]
+              'icon_resources': [(0, 'src/teatime.ico')]
               }],
     )

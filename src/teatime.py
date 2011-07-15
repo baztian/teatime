@@ -95,8 +95,12 @@ class MyFrame(wx.Frame):
         self.slider.SetValue(0)
         self.label.SetLabel(time_str(0))
         self.scrolling = False
+        style = wx.OK
+        if sys.platform.startswith('win32'):
+            # normally windows doesn't allow to bring a window to front
+            style = style | wx.STAY_ON_TOP
         dlg = wx.MessageDialog(self, "Mind the tea!", "Tea!?",
-                               style=wx.OK, pos=wx.DefaultPosition)
+                               style=style, pos=wx.DefaultPosition)
         self.Iconize(False)
         dlg.Iconize(False)
         dlg.Raise()

@@ -65,4 +65,8 @@ To do
 
 - Windows launcher
 
+- Self made icon
+
+- Don't change slider when scolling the wheel while not over frame
+
 .. _WxPython: http://www.wxpython.org/

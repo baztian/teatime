@@ -2,8 +2,8 @@
  TeaTime - Mind the tea!
 =========================
 
-TeaTime is a small application that sits on the tray bar of your
-computer and will inform you if a specified time is over.
+TeaTime is a small application that informs you if a specified time is
+over.
 
 .. contents::
 
@@ -66,5 +66,11 @@ To do
 - Windows launcher
 
 - Self made icon
+
+- Sit in the traybar
+
+- Reminder through traybar popup instead of modal dialog
+
+- Show time tea is overdue in reminder dialog
 
 .. _WxPython: http://www.wxpython.org/

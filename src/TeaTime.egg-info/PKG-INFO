@@ -73,6 +73,8 @@ Description: =========================
         
         - Windows launcher
         
+        - Self made icon
+        
         .. _WxPython: http://www.wxpython.org/
         
 Keywords: tea time timer wxpython wx

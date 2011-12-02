@@ -77,10 +77,20 @@ class MyFrame(wx.Frame):
         return panel
 
     def OnScroll(self, event):
-        self.scrolling = True
-        seconds = event.GetPosition()
-        self.label.SetLabel(time_str(seconds))
-        event.Skip()
+        mouse_pos = wx.GetMousePosition()
+        frame_pos = self.GetPosition()
+        frame_size = self.GetSize()
+        rect = wx.Rect(frame_pos[0], frame_pos[1], frame_size[0], frame_size[1])
+        if rect.Inside(mouse_pos) or self.scrolling:
+            # only handle scroll events from inside the window to
+            # avoid timer activation accidently
+            self.scrolling = True
+            seconds = event.GetPosition()
+            self.label.SetLabel(time_str(seconds))
+            event.Skip()
+        else:
+            # ignore scroll event and reset value
+            self.slider.SetValue(self.time_val)
 
     def OnScrollChanged(self, event):
         self.scrolling = False

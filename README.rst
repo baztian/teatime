@@ -35,7 +35,11 @@ Ubuntu Lucid Lynx.
 Usage
 =====
 
-Simply start teatime via the teatime script.
+Simply start teatime via the teatime script. Use the slider set the
+number of seconds when you want to get reminded.
+
+You can click in the scrolling area to increase in steps of 30
+seconds. If you want to reset the timer simply slide to zero seconds.
 
 Contributing
 ============

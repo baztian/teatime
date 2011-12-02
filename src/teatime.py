@@ -85,6 +85,8 @@ class MyFrame(wx.Frame):
             # only handle scroll events from inside the window to
             # avoid timer activation accidently
             self.scrolling = True
+            self.timer.Stop()
+            self.slider_update.Stop()
             seconds = event.GetPosition()
             self.label.SetLabel(time_str(seconds))
             event.Skip()
@@ -95,10 +97,11 @@ class MyFrame(wx.Frame):
     def OnScrollChanged(self, event):
         self.scrolling = False
         self.time_val = event.GetPosition()
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
-        self.timer.Start(self.time_val * 1000, oneShot=True)
-        self.Bind(wx.EVT_TIMER, self.OnSliderUpdate, self.slider_update)
-        self.slider_update.Start(1000)
+        if self.time_val:
+            self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
+            self.timer.Start(self.time_val * 1000, oneShot=True)
+            self.Bind(wx.EVT_TIMER, self.OnSliderUpdate, self.slider_update)
+            self.slider_update.Start(1000)
 
     def OnTimer(self, event):
         self.slider_update.Stop()

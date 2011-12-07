@@ -35,8 +35,8 @@ class MyFrame(wx.Frame):
         sizer = wx.BoxSizer()
         self.time_val = 0
         self.scrolling = False
-        panel = self.CreateMainPanel()
-        sizer.Add(panel, 1, flag=wx.EXPAND)
+        self.panel = self.CreateMainPanel()
+        sizer.Add(self.panel, 1, flag=wx.EXPAND)
         self.SetSizer(sizer)
         self.Fit()
         size = self.GetBestSize()
@@ -78,9 +78,8 @@ class MyFrame(wx.Frame):
 
     def OnScroll(self, event):
         mouse_pos = wx.GetMousePosition()
-        frame_pos = self.GetPosition()
-        frame_size = self.GetSize()
-        rect = wx.Rect(frame_pos[0], frame_pos[1], frame_size[0], frame_size[1])
+        # for some rease self.GetScreenRect doesn't work here
+        rect = self.panel.GetScreenRect()
         if rect.Inside(mouse_pos) or self.scrolling:
             # only handle scroll events from inside the window to
             # avoid timer activation accidently

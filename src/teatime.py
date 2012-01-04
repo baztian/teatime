@@ -16,6 +16,10 @@
 # You should have received a copy of the GNU General Public License
 # along with TeaTime.  If not, see <http://www.gnu.org/licenses/>.
 
+"""TeaTime is a small GUI application that informs you if a specified
+time is over.
+"""
+
 from os import path
 import sys
 import wx

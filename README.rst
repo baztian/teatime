@@ -2,8 +2,8 @@
  TeaTime - Mind the tea!
 =========================
 
-TeaTime is a small application that informs you if a specified time is
-over.
+TeaTime is a small GUI application that informs you if a specified
+time is over.
 
 .. contents::
 

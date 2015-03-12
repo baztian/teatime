@@ -7,12 +7,12 @@
 # under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # TeaTime is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with TeaTime.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -48,7 +48,8 @@ class MyFrame(wx.Frame):
         self.timer = wx.Timer(self)
         self.slider_update = wx.Timer(self)
         icon = self.CreateIcon()
-        self.SetIcon(icon)
+        if icon:
+            self.SetIcon(icon)
 
     def CreateIcon(self):
         ib=wx.IconBundle()
@@ -58,11 +59,12 @@ class MyFrame(wx.Frame):
             # Probably running from exe File
             module_name = sys.argv[0]
         ico_name = path.join(path.dirname(module_name), "teatime.ico")
-        icon = wx.Icon(ico_name, wx.BITMAP_TYPE_ICO)
-        #ib.AddIconFromFile(ico_name, wx.BITMAP_TYPE_ICO)
-        #self.SetIcons(ib)
-        return icon
-        
+        if path.exists(ico_name):
+            icon = wx.Icon(ico_name, wx.BITMAP_TYPE_ICO)
+            #ib.AddIconFromFile(ico_name, wx.BITMAP_TYPE_ICO)
+            #self.SetIcons(ib)
+            return icon
+
     def CreateMainPanel(self):
         panel = wx.Panel(self, -1)
         sizer = wx.FlexGridSizer(rows=2, cols=1, vgap=5)
@@ -130,7 +132,7 @@ class MyFrame(wx.Frame):
             return
         self.slider.SetValue(self.time_val)
         self.label.SetLabel(time_str(self.time_val))
-    
+
 def main():
     app = wx.PySimpleApp()
     frame = MyFrame()

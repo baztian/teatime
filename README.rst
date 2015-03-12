@@ -52,7 +52,7 @@ License
 =======
 
 TeaTime is released under the GNU General Public license (GPL). See
-the file ``gpl.txt`` in the distribution for details.
+the file ``LICENSE`` in the distribution for details.
 
 The icon is licensed unter a Creative Commons Attribution-Share Alike
 3.0 License. I've got it from `aha-soft <www.aha-soft.com>`_.
